@@ -53,8 +53,27 @@ public class Libro{
     //Metodo para cambiar a no disponible el libro
     public void prestar(){
         this.disponible = false;
+        Prestado();
     }
-
+    //Metodo para cambiar a disponible el libro
+    public void devolver(){
+        this.disponible = true;
+        Devuelto();
+    }
+    //Metodo para indicar que no esta disponible
+    public void NoDisponible(){
+        System.out.println("El libro "+ titulo + " no esta disponible");
+    }
+    //Metodo para indicar que el libro ha sido prestado
+    public void Prestado(){
+        System.out.println("El libro "+ titulo + " ha sido prestado");
+    }
+    public void Devuelto(){
+        System.out.println("El libro "+ titulo + " ha sido devuelto");
+    }
+    public void LibroNoPrestado(){
+        System.out.println("El libro "+ titulo + " no pertenece al usuario");
+    }
     //Metodo toString
     @Override
     public String toString() {
