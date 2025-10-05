@@ -68,9 +68,11 @@ public class Libro{
     public void Prestado(){
         System.out.println("El libro "+ titulo + " ha sido prestado");
     }
+    //Metodo para indicar que el libro ha sido devuelto
     public void Devuelto(){
         System.out.println("El libro "+ titulo + " ha sido devuelto");
     }
+    //Metodo para indicar que el libro no pertenece al usuario
     public void LibroNoPrestado(){
         System.out.println("El libro "+ titulo + " no pertenece al usuario");
     }
