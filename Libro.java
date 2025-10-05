@@ -45,9 +45,14 @@ public class Libro{
         this.disponible = disponible;
     }
 
-    //Metodo de Instancia para Disponibilidad
+    //Metodo de Instancia
+    //Metodo para verificar si el libro esta disponible
     public boolean estaDisponible(){
         return disponible;
+    }
+    //Metodo para cambiar a no disponible el libro
+    public void prestar(){
+        this.disponible = false;
     }
 
     //Metodo toString
