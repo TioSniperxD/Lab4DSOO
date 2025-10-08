@@ -9,6 +9,17 @@ public class Biblioteca {
         this.Usuarios = new ArrayList<>();
         inicializarDatos();     //LLAMA AL METODO QUE INICIALIZA
     }
+    //ESTOS METODOS SON SOBRECARGADOS
+    //AGREGA USUARIOS LLAMANDO AL METODO AGREGAR USUARIO
+    public void Agregar(String nombre, String id){
+        AgregarUsuario(nombre, id);
+        System.out.println("El usuario se agrego con exito");
+    }
+    //AGREGA LIBROS LLAMANDO AL METODO AGREGAR LIBRO
+    public void Agregar(String titulo, String autor, String ISBN){
+        AgregarLibro(titulo, autor, ISBN);
+        System.out.println("El libro se agrego con exito");
+    }
     //METODOS AGREGAR USUARIO Y LIBRO
     public void AgregarUsuario(String nombre, String id){
         Usuarios.add(new Usuario(nombre, id));
@@ -16,11 +27,12 @@ public class Biblioteca {
     public void AgregarLibro(String titulo, String autor, String ISBN){
         Libros.add(new Libro(titulo, autor, ISBN));
     }
+
     //METODOS PARA TOMAR Y DEVOLVER
     
     //ESTE METODO LLAMA A OTROS METODOS PARA PRESTAR
     public void TomarPrestado(String id, String ISBN){
-        if(ValidarUsuario(id)==true && ValidarLibro(ISBN)==true){   //VERIFICA QUE EL LIBRO Y USUARIO EXISTA
+        if(ExistenciaLibroUsuario(id, ISBN)){   //VERIFICA QUE EL LIBRO Y USUARIO EXISTA
             Libro libro = BuscarLibro(ISBN);
             if(libro.getDisponible()==true){    //VERIFICA QUE EL LIBRO ESTE DISPONIBLE
                 Prestado(id, ISBN);     //LLAMA AL METODO PRESTAR
@@ -30,14 +42,23 @@ public class Biblioteca {
     }
     //ESTE METODO LLAMA A OTROS METODOS PARA DEVOLVER
     public void DevolverLibro(String id, String ISBN){
-        if(ValidarUsuario(id)==true && ValidarLibro(ISBN)==true){   //VERIFICA QUE EL LIBRO Y USUARIO EXISTA
+        if(ExistenciaLibroUsuario(id, ISBN)){   //VERIFICA QUE EL LIBRO Y USUARIO EXISTA
             Usuario usuario = BuscarUsuario(id);
             Libro libro = BuscarLibro(ISBN);
-            if(usuario.getLibros().contains(libro)){    //VERIFICA QUE EL USUARIO TENGA EL LIBRO
+            if(ContieneLibro(usuario, libro)){    //VERIFICA QUE EL USUARIO TENGA EL LIBRO
                 Devolver(id, ISBN);     //LLAMA AL METODO DEVOLVER
                 System.out.println("Libro devuelto");            
             }else System.out.println("El usuario no tiene ese libro");
         }else System.out.println("Usuario o libro no reconocido");
+    }
+    //ESTE METODO VERIFICA QUE EXISTAN EL LIBRO Y USUARIO INGRESADO, RETORNA TRUE O FALSE
+    public Boolean ExistenciaLibroUsuario(String id, String ISBN){
+        if(ValidarUsuario(id)==true && ValidarLibro(ISBN)==true) return true;
+        else return false;
+    }
+    //ESTE METODO RETORNA TRUE SI TIENE EL LIBRO, FALSE SI NO LO TIENE
+    public Boolean ContieneLibro(Usuario usuario, Libro libro){
+        return usuario.getLibros().contains(libro);
     }
     //METODO PRESTAR
     public void Prestado(String id, String ISBN){
