@@ -81,7 +81,7 @@ public class Biblioteca {
         }
         return false;
     }
-    //METODO QUE VALIA LIBRO
+    //METODO QUE VALIDA LIBRO
     public Boolean ValidarLibro(String ISBN){
         for (int i = 0; i < Libros.size(); i++) {
             if(Libros.get(i).getISBN().equals(ISBN)) return true;
@@ -115,3 +115,4 @@ public class Biblioteca {
         Usuarios.add(new Usuario("María", "003"));
     }
 }
+
