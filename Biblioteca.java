@@ -9,24 +9,25 @@ public class Biblioteca {
         this.Usuarios = new ArrayList<>();
         inicializarDatos();     //LLAMA AL METODO QUE INICIALIZA
     }
-    //ESTOS METODOS SON SOBRECARGADOS
-    //AGREGA USUARIOS LLAMANDO AL METODO AGREGAR USUARIO
-    public void Agregar(String nombre, String id){
-        AgregarUsuario(nombre, id);
+    //ESTOS METODOS SON PARA AGREGAR
+    //AGREGA USUARIOS LLAMANDO AL METODO AGREGAR 
+    public void AgregarUsuario(String nombre, String id){
+        Agregar(nombre, id);
         System.out.println("El usuario se agrego con exito");
     }
-    //AGREGA LIBROS LLAMANDO AL METODO AGREGAR LIBRO
-    public void Agregar(String titulo, String autor, String ISBN){
-        AgregarLibro(titulo, autor, ISBN);
+    //AGREGA LIBROS LLAMANDO AL METODO AGREGAR 
+    public void AgregarLibro(String titulo, String autor, String ISBN){
+        Agregar(titulo, autor, ISBN);
         System.out.println("El libro se agrego con exito");
     }
-    //METODOS AGREGAR USUARIO Y LIBRO
-    public void AgregarUsuario(String nombre, String id){
+    //METODO AGREGAR SOBRECARGADO
+    public void Agregar(String nombre, String id){
         Usuarios.add(new Usuario(nombre, id));
     }
-    public void AgregarLibro(String titulo, String autor, String ISBN){
+    public void Agregar(String titulo, String autor, String ISBN){
         Libros.add(new Libro(titulo, autor, ISBN));
     }
+
 
     //METODOS PARA TOMAR Y DEVOLVER
     
