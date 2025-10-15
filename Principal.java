@@ -20,5 +20,8 @@ public class Principal {
         sistema.DevolverLibro("001", "200");
         sistema.DevolverLibro("006", "900");
         sistema.DevolverLibro("004", "300");
+
+        sistema.TomarPrestado("004", "100");
     }
 }
+
